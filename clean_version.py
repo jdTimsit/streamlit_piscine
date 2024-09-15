@@ -9,19 +9,15 @@ import pandas as pd
 pd.options.display.max_columns = 500
 pd.options.display.max_rows = 500
 
-data = pd.read_csv("./bassins sportifs de natation.csv", sep=";", low_memory=False)
+piscines = pd.read_csv("./bassins sportifs de natation.csv", sep=";", low_memory=False)
 
 ##############################################
 # Filtres non paramétables
 ##############################################
 
-# zoom sur les bassin sportifs de natation
-piscines = data[data["Famille d'équipement sportif"]=="Bassin de natation"]
-piscines = piscines[piscines["Type d'équipement sportif"].isin(["Bassin sportif de natation"])]
-
 # Zoom sur les piscines dont les latitudes et longitudes sont renseignées
 piscines = piscines[ ~( piscines["Longitude (WGS84)"].isna() & piscines["Latitude (WGS84)"].isna() )
-                    & ( piscines["Longueur du bassin"].isin([25, 50]) )
+                    & ( piscines["Longueur du bassin"]>= 25 )
 ]
 
 #zoom sur les longueur classiques
