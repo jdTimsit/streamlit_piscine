@@ -9,7 +9,7 @@ import pandas as pd
 pd.options.display.max_columns = 500
 pd.options.display.max_rows = 500
 
-piscines = pd.read_csv("./bassins sportifs de natation.csv", sep=";", low_memory=False)
+piscines = pd.read_csv("./bassin-sportif-de-natation.csv", sep=";", low_memory=False)
 
 ##############################################
 # Filtres non paramétables
